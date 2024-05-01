@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Results</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .stats-table, .details-table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .stats-table th {
+            width: 30%; /* Reducing the width of headers */
+        }
+        .stats-table td {
+            width: 70%; /* Increasing the width of data cells */
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #776cfd;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dashboard for Student ID: {{ results['student_id'] }}</h1>
+    <table class="stats-table">
+        <tr>
+            <th>Total Questions Solved</th>
+            <td>{{ results['total_questions_solved'] }}</td>
+        </tr>
+        <tr>
+            <th>Student Correctness</th>
+            <td>{{ results['student_correctness'] | round(2) }}%</td>
+        </tr>
+        <tr>
+            <th>Correctness Comparison</th>
+            <td>{{ results['correctness_comparison'] | round(2) }}%</td>
+        </tr>
+    </table>
+    <h2>Details of Wrong Answers</h2>
+    <table class="details-table">
+        <thead>
+            <tr>
+                <th>Question ID</th>
+                <th>Time Taken</th>
+                <th>Average Time Taken</th>
+                <th>Average Correctness</th>
+                <th>My Answer</th>
+                <th>Correct Answer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in results['wrong_answers_df'].collect() %}
+            <tr>
+                <td>{{ row['question_id'] }}</td>
+                <td>{{ row['elapsed_time']| round(2) }}</td>
+                <td>{{ row['average_time_taken_on_this_q'] | round(2)}}</td>
+                <td>{{ row['average_correctness_of_this_q'] | round(2)}}</td>
+                <td>{{ row['student_answer'] }}</td>
+                <td>{{ row['correct_answer'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

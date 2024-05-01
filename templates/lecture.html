@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture Summary</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .table th, .table td {
+            text-align: left;  /* Adjust as needed, possible values: left, center, right */
+            vertical-align: middle;
+            color: black;  /* Setting text color to black */
+        }
+        .table th {
+            background-color: #776cfd;  /* Blue background for headers with white text */
+            color: white;
+        }
+        .highlighted {
+            background-color: #f0f0f0;  /* Light grey background for highlighted cells */
+        }
+        /* Specific styling for summary and detail tables to differentiate them */
+        .summary-table td, .detailed-table td {
+            background-color: #f0f0f0;  /* Light grey background for all data cells */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="header p-3">Summary Metrics of Lecture  {{lecture_id}}</h1>
+        <div class="table-responsive summary-table">{{ summary_html|safe }}</div>
+        <h1 class="header p-3 mt-5">Detailed Question Data</h1>
+        <div class="table-responsive detailed-table">{{ detailed_html|safe }}</div>
+    </div>
+</body>
+</html>

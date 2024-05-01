@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture Search</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { padding-top: 20px; }
+        .lecture-id { margin: 5px; padding: 10px; background-color: #c9c4fe; border: 1px solid #dee2e6; border-radius: 5px; display: inline-block; }
+        .lecture-container { margin-top: 20px; }
+        /* Correct CSS selector for modifying Bootstrap primary button */
+        .btn-primary {
+            background-color: #776cfd; /* Green */
+            border-color: #776cfd; /* Ensure the border color matches the background */
+        }
+        button:hover {
+            background-color: #c9c4fe;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">Search for Lecture</h1>
+        <form method="POST" class="mb-3">
+            <div class="mb-3">
+                <label for="lecture_id" class="form-label">Enter Lecture ID:</label>
+                <input type="text" class="form-control" id="lecture_id" name="lecture_id" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        <div class="lecture-container">
+            <h2>Available Lecture IDs:</h2>
+            {% for lecture in lecture_ids %}
+                <div class="lecture-id">{{ lecture.lecture_id }}</div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
