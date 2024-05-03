@@ -21,18 +21,44 @@ End to end student question-solving dashboard &amp; lecture diagnosis
 - [Credit/Acknowledgment](#star2-creditacknowledgment)
 - [License](#lock-license)
 
-##  :beginner: About
-Add a detailed introduction about the project here, everything you want the reader to know.
+# QuizDashboard
 
-## :zap: Usage
-Write about how to use this project.
+## Introduction
+- ![Project Logo](path/to/logo.png)
+- This project develops an end-to-end student question-solving dashboard & lecture diagnosis system, leveraging extensive student interaction data to enhance educational outcomes.
+
+## Business Case
+- **Educators**: Tailor teaching strategies based on concrete performance data to optimize learning.
+- **Students**: Gain insights into their learning process, identifying strengths and areas for improvement.
+- **Institutions**: Leverage data to ensure content effectiveness and uphold academic integrity.
+
+## Data Description
+- **Dataset**: EdNet-KT1, sourced from GitHub, captures over 131 million interactions from more than 780K users on the Santa platform.
+- **Contents**: Includes detailed logs of user interactions with quiz questions and lectures over a span of two years, providing a comprehensive view of student learning behaviors.
+
+## Project Workflow
+- **Data Loading**: Data is loaded into a PostgreSQL database, utilizing Python scripts for efficient handling.
+- **Analysis**: Apache Spark processes the data to generate insights on student performance and lecture effectiveness.
+- **Visualization**: A Flask-based web application displays the results on a dynamic student dashboard.
+
+## Usage
 
 ###  :electric_plug: Installation
 - Steps on how to install this project, to use it.
 - Be very detailed here, For example, if you have tools which run on different operating systems, write installation steps for all of them.
 
 ```
-$ add installations steps if you have to.
+$ install -r requirements.py
+```
+
+Load data to postgresql database, which prompts user input for database credentials
+```
+$ python LoadData.py
+```
+
+Generate student dashboard: 
+```
+$ python spark.py
 ```
 
 ###  :package: Commands
