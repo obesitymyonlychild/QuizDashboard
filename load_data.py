@@ -41,7 +41,7 @@ def connect_to_postgresql():
     #host = input('Enter your PostgreSQL host (localhost): ')
     #port = input('Enter your PostgreSQL port (default is 5432): ') or '5432'
     database = input('Enter your PostgreSQL database name: ')
-    print("creating engine for: ", username, password, database)
+    print("creating engine for: ", username, database)
     engine = create_engine(f'postgresql://{username}:{password}@localhost:5432/{database}')
     try:
         engine.connect()
