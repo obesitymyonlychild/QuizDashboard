@@ -1,13 +1,10 @@
-import psycopg2
 from pyspark.sql import SparkSession
-import pyspark.sql.functions
 from pyspark.sql import Window
-from pyspark.sql.functions import col, split, explode, array_contains, avg, count, broadcast, when
-from pyspark import SparkContext, SparkConf
+from pyspark.sql.functions import col, split, explode, avg, count, broadcast, when
 import pandas as pd
 from flask import Flask, render_template, request, redirect, url_for
-from LoadData import *
-def init_db():
+from load_data import *
+def init_db(spark):
 
     engine = connect_to_postgresql()
 
@@ -125,7 +122,7 @@ if __name__ == "__main__":
 
     #check driver memory 
     print(sc._conf.get('spark.driver.memory'))
-    interactions, students, lectures, questions = init_db()
+    interactions, students, lectures, questions = init_db(spark)
 
     questions_df = broadcast(questions)
     correctness_df = interactions.join(questions_df, "question_id")
