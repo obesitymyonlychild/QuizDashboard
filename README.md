@@ -28,19 +28,31 @@ $ install -r requirements.py
 
 Load data to postgresql database, which prompts user input for database credentials.
 ```
-$ python LoadData.py
+$ python load_data.py
 ```
 The db structure looks like:
 ![rds](assets/dbr.png "Database Relation")
 
 Generate student dashboard: 
 ```
-$ python spark.py
+$ python students.py
 ```
 
-### Demo
-![Login Page](assets/login.png "Login Page")
+Generate lecture diagnosis
+```
+$ python lectures.py
+```
 
-![student dashboard](assets/dashboard.png "Dashboard")
+## Demo
+
+### student dashboard
+![Login Page](assets/student_login.png "Student Login Page")
+
+![student dashboard](assets/student_summary.png "Dashboard")
+
+### lecture diagnosis
+![Login Page](assets/lecture_search.png "Lecture Search Page")
+
+![lecture dashboard](assets/lecture_summary.png "Lecture Page")
 
 
