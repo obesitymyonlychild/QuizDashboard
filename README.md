@@ -20,14 +20,13 @@
 ## Usage
 
 ###  :electric_plug: Installation
-- Steps on how to install this project, to use it.
-- Be very detailed here, For example, if you have tools which run on different operating systems, write installation steps for all of them.
+- Installing package dependencies.
 
 ```
 $ install -r requirements.py
 ```
 
-Load data to postgresql database, which prompts user input for database credentials
+Load data to postgresql database, which prompts user input for database credentials.
 ```
 $ python LoadData.py
 ```
